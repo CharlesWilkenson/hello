@@ -4,8 +4,10 @@ version: 2.1
 jobs:
   say-hello:
     # Specify the execution environment. You can specify an image from Docker Hub or use one of our convenience images from CircleCI's Developer Hub.
+    # See: https://circleci.com/docs/configuration-reference/#executor-job
     docker:
-      - image: cimg/base:stable
+    #  - image: cimg/base:stable
+       - image: circleci/python:3.6.1
     working_directory: ~/repo
     # Add steps to the job
     # See: https://circleci.com/docs/configuration-reference/#steps
@@ -19,12 +21,8 @@ jobs:
       - run:
           name: "Install depencies"
           command: |
-           "echo Hello, World!"
            python3 -m venv venv
            . venv/bin/activate
-      - run:
-          name: "Install make"
-          command: |           
            make install
            
       - save_cache:
