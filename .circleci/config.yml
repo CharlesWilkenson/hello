@@ -22,6 +22,9 @@ jobs:
            "echo Hello, World!"
            python3 -m venv venv
            . venv/bin/activate
+      - run:
+          name: "Install make"
+          command: |           
            make install
            
       - save_cache:
